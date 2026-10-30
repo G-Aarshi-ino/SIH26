@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AICTE-APAARSutra • National Student Academic Registry & Verification Platform</title>
+  <meta name="description" content="Integrated digital platform for AICTE-approved institutions using APAAR ID as a unique academic identifier. Real-time admission validation, NFC smart card reader, and verifiable credentials.">
+  <link rel="stylesheet" href="css/styles.css">
+  <!-- Chart.js for enterprise analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- National Tricolor Accent Ribbon -->
+  <div class="tricolor-ribbon"></div>
+
+  <!-- Government of India / AICTE Top Bar -->
+  <div class="gov-top-bar">
+    <div style="display:flex; align-items:center; gap:16px;">
+      <span>🇮🇳 भारत सरकार • Government of India</span>
+      <span>शिक्षा मंत्रालय • Ministry of Education</span>
+      <span>अखिल भारतीय तकनीकी शिक्षा परिषद (AICTE)</span>
+    </div>
+    <div style="display:flex; align-items:center; gap:14px;">
+      <div class="gov-telemetry-badge">
+        <span class="pulse-dot"></span>
+        <span>CENTRAL LEDGER ACTIVE • 99.99%</span>
+      </div>
+      <span>APAAR NDEAR v2.6</span>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-navbar">
+    <div class="nav-container">
+      
+      <div class="brand-section">
+        <!-- AICTE Official SVG Emblem -->
+        <svg class="brand-emblem-svg" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="46" stroke="#c29b38" stroke-width="3" fill="#0d2040"/>
+          <circle cx="50" cy="50" r="38" stroke="#3b82f6" stroke-width="1.5"/>
+          <path d="M50 16 L57 33 L75 35 L61 47 L66 65 L50 55 L34 65 L39 47 L25 35 L43 33 Z" fill="#f97316" opacity="0.9"/>
+          <circle cx="50" cy="50" r="16" fill="#1e3a8a" stroke="#fff" stroke-width="1.5"/>
+          <text x="50" y="54" font-size="9" fill="#ffffff" text-anchor="middle" font-family="'Outfit', sans-serif" font-weight="bold">AICTE</text>
+        </svg>
+
+        <div class="brand-text">
+          <h1>
+            APAAR<span style="color:#f97316;">Sutra</span>
+            <span class="brand-tag">SIH 26263</span>
+          </h1>
+          <div class="brand-subtitle">National APAAR Student Registry, Anomaly Detection & NFC Verification Platform</div>
+        </div>
+      </div>
+
+      <!-- Role-Based Modular Tab Navigation -->
+      <nav class="nav-tabs-group" id="main-nav-tabs">
+        <button class="nav-tab-btn active" data-tab-target="aicte-tab" id="nav-btn-aicte">
+          🏛️ AICTE Apex Council
+        </button>
+        <button class="nav-tab-btn" data-tab-target="institution-tab" id="nav-btn-inst">
+          🏫 College Admissions Node
+        </button>
+        <button class="nav-tab-btn" data-tab-target="nfc-tab" id="nav-btn-nfc" style="border: 1px solid rgba(59, 130, 246, 0.4); background: rgba(59, 130, 246, 0.1);">
+          📳 NFC Smart Card Reader
+        </button>
+        <button class="nav-tab-btn" data-tab-target="verification-tab" id="nav-btn-veri">
+          🔍 Stakeholder Verifier
+        </button>
+        <button class="nav-tab-btn" data-tab-target="reports-tab" id="nav-btn-reports">
+          📊 NIRF / NAAC Reports
+        </button>
+        <button class="nav-tab-btn" data-tab-target="audit-tab" id="nav-btn-audit">
+          🛡️ Audit & API
+        </button>
+      </nav>
+
+      <!-- Actions: Theme Toggle & Degree Modal Shortcut -->
+      <div class="nav-actions">
+        <button class="btn btn-outline btn-sm" onclick="window.openDegreeModal('2024-8849-1029')" title="View Degree Certificate with APAAR ID">
+          🎓 Sample Certificate
+        </button>
+        <button class="btn-icon" id="theme-toggle-btn" title="Toggle Light/Dark Theme">
+          <span id="theme-toggle-icon">☀️</span>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Page Content Area -->
+  <main class="page-wrapper">
+
+    <!-- ==========================================================
+         TAB 1: AICTE APEX REGULATORY DASHBOARD (NATIONAL OVERSIGHT)
+    =========================================================== -->
+    <section class="tab-pane active" id="aicte-tab">
+      
+      <!-- Hero Overview -->
+      <div class="hero-overview">
+        <div class="hero-content">
+          <div class="hero-badge-tag">
+            <span>सत्यमेव जयते</span> • AICTE CENTRAL REGULATORY MONITORING
+          </div>
+          <h2 class="hero-title">Integrated National APAAR Student Registry</h2>
+          <p class="hero-desc">
+            Empowering AICTE and State Technical Boards with real-time student-level verification, supernumerary quota audit (TFW, EWS, NRI, FN, OCI), and intelligent cross-institution duplicate enrolment detection linked to the National Academic Identity.
+          </p>
+          <div class="hero-quick-actions">
+            <button class="btn btn-primary" onclick="window.switchTab('institution-tab')">
+              📥 Institutional Student Upload
+            </button>
+            <button class="btn btn-secondary" onclick="window.switchTab('nfc-tab')">
+              📳 Open NFC Smart Card Terminal
+            </button>
+            <button class="btn btn-outline" onclick="window.exportPolicyReport('aph')">
+              📑 Export APH Compliance Audit
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- National Telemetry KPIs (Requirement 2 & 4) -->
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-icon">🏛️</div>
+          <div class="kpi-label">AICTE Approved Institutions</div>
+          <div class="kpi-value" id="stat-total-inst">8,942</div>
+          <div class="kpi-trend trend-up">✓ 100% Onboarded</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon">🎯</div>
+          <div class="kpi-label">Approved Total Intake Cap</div>
+          <div class="kpi-value" id="stat-approved-intake">3,450,200</div>
+          <div class="kpi-trend text-muted">Academic Year 2024-25</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon">👨‍🎓</div>
+          <div class="kpi-label">Actual Enrolment (APAAR Verified)</div>
+          <div class="kpi-value" id="stat-enrolled">3,120,450</div>
+          <div class="kpi-trend trend-up">↑ 90.4% Intake Realization</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon">✨</div>
+          <div class="kpi-label">Supernumerary Seats (TFW/EWS)</div>
+          <div class="kpi-value" id="stat-supernumerary">218,940</div>
+          <div class="kpi-trend trend-up">Compliant with AICTE Cap</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon">🌍</div>
+          <div class="kpi-label">NRI / OCI / Foreign National (FN)</div>
+          <div class="kpi-value" id="stat-nri-oci">22,890</div>
+          <div class="kpi-trend text-muted">MEA & ICCR Attested</div>
+        </div>
+
+        <div class="kpi-card">
+          <div class="kpi-icon">🚨</div>
+          <div class="kpi-label">Anomalies Detected / Resolved</div>
+          <div class="kpi-value text-danger" id="stat-anomalies">1,482</div>
+          <div class="kpi-trend trend-alert">⚠️ 84 Active Cases</div>
+        </div>
+      </div>
+
+      <!-- Real-Time Anomaly Detection Radar (Requirement 3: Automated Validation) -->
+      <div class="anomaly-section">
+        <div class="card-header">
+          <h3 class="card-title">
+            <span>🚨 Intelligent Anomaly Radar & Fraud Prevention Feed</span>
+          </h3>
+          <span class="badge badge-danger">Live Heuristic Validation Engine</span>
+        </div>
+        <div class="anomaly-radar-feed" id="anomaly-radar-feed">
+          <!-- Populated dynamically by app.js -->
+        </div>
+      </div>
+
+      <!-- Interactive National Analytics Charts -->
+      <div class="charts-grid">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">📊 Discipline-Wise Approved Intake vs Actual Enrolment</h3>
+            <span class="text-xs text-muted font-mono">Real-Time Aggregation</span>
+          </div>
+          <div class="chart-container-tall">
+            <canvas id="intakeComparisonChart"></canvas>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">🧩 Quota & Supernumerary Distribution</h3>
+            <span class="text-xs text-muted font-mono">TFW / EWS / NRI / FN</span>
+          </div>
+          <div class="chart-container-tall">
+            <canvas id="categoryBreakdownChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         TAB 2: INSTITUTIONAL PORTAL (STUDENT UPLOAD & SEAT MATRIX)
+    =========================================================== -->
+    <section class="tab-pane" id="institution-tab">
+      
+      <!-- Institution Header Banner -->
+      <div class="card mb-4">
+        <div class="dossier-header" style="border:none; padding:0;">
+          <div>
+            <span class="hero-badge-tag">INSTITUTIONAL NODE #001</span>
+            <h2 id="inst-header-name" class="font-bold text-2xl">College of Engineering, Pune (COEP Tech Univ)</h2>
+            <p id="inst-header-pid" class="text-sm text-muted font-mono">AICTE Permanent ID: 1-002938171 • State Technological University</p>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <div class="kpi-card" style="padding:10px 16px; margin:0;">
+              <span class="kpi-label">Approved Intake</span>
+              <div class="text-xl font-bold font-mono text-accent" id="inst-summary-intake">450</div>
+            </div>
+            <div class="kpi-card" style="padding:10px 16px; margin:0;">
+              <span class="kpi-label">Admitted</span>
+              <div class="text-xl font-bold font-mono text-success" id="inst-summary-enrolled">443</div>
+            </div>
+            <div class="kpi-card" style="padding:10px 16px; margin:0;">
+              <span class="kpi-label">Supernumerary</span>
+              <div class="text-xl font-bold font-mono text-purple" id="inst-summary-super">51</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Approved Intake vs Actual Admission Matrix (Requirement 2) -->
+      <div class="card mb-4" style="margin-top:1.5rem;">
+        <div class="card-header">
+          <h3 class="card-title">📋 Program-Wise Seat Matrix & Quota Allocation (Approved vs Actual)</h3>
+          <span class="status-pill pill-success text-xs">AICTE Approval Letter Validated (AY 2024-25)</span>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Program / Discipline</th>
+                <th class="text-center">Approved Intake</th>
+                <th class="text-center">Actual Enrolled</th>
+                <th class="text-center">TFW (5%)</th>
+                <th class="text-center">EWS (10%)</th>
+                <th class="text-center">NRI Quota</th>
+                <th class="text-center">OCI Quota</th>
+                <th class="text-center">FN (15%)</th>
+                <th class="text-center">Total Supernumerary</th>
+                <th>Seat Fill Ratio</th>
+              </tr>
+            </thead>
+            <tbody id="seat-matrix-table-body">
+              <!-- Populated dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Bulk Upload & Intelligent Automated Validation Engine (Requirements 1 & 3) -->
+      <div class="card mb-4" style="margin-top:1.5rem;">
+        <div class="card-header">
+          <div>
+            <h3 class="card-title">🚀 Bulk Student-Level Upload & Automated Anomaly Detection Engine</h3>
+            <p class="text-xs text-muted">Upload CSV / Excel containing student records with 12-digit APAAR IDs, Supernumerary, NRI, OCI, and FN tags.</p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-xs btn-success" id="load-sample-clean">
+              ✓ Load Valid Batch Demo
+            </button>
+            <button class="btn btn-xs btn-danger" id="load-sample-anomaly">
+              ⚠️ Load Anomaly Test Batch (Breach Demo)
+            </button>
+          </div>
+        </div>
+
+        <div class="dropzone-area" id="csv-dropzone">
+          <div class="dropzone-icon">📁</div>
+          <h4 class="font-bold">Drag and drop student admission CSV here, or click to browse</h4>
+          <p class="text-xs text-muted mt-1">Automatic verification of APAAR checksum, cross-institution duplicate enrollment, and intake overflow checks.</p>
+          <input type="file" id="csv-file-input" accept=".csv" style="display: none;">
+        </div>
+
+        <!-- Dynamic Output of Validation Engine -->
+        <div id="csv-validation-output" style="display: none;"></div>
+      </div>
+
+      <!-- Single Student Registration Form (Requirement 1 & 2) -->
+      <div class="card mb-4" style="margin-top:1.5rem;">
+        <div class="card-header">
+          <h3 class="card-title">📝 Individual Student Admission Entry with Live APAAR Verification</h3>
+          <span class="text-xs text-muted font-mono">DigiLocker NDEAR Registry Integration</span>
+        </div>
+
+        <form id="single-student-form">
+          <div class="form-grid">
+            
+            <div class="form-group">
+              <label class="form-label" for="form-apaar-id">APAAR ID (12-Digit Unique National Identifier) *</label>
+              <div class="input-with-action">
+                <input type="text" id="form-apaar-id" class="form-control font-mono" placeholder="e.g. 2024-8849-1029" required>
+                <button type="button" class="btn btn-outline btn-sm" id="verify-apaar-btn">Verify APAAR</button>
+              </div>
+              <div id="apaar-check-feedback"></div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-student-name">Full Student Name (As per APAAR / Aadhaar) *</label>
+              <input type="text" id="form-student-name" class="form-control" placeholder="Candidate Name" required>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-roll-no">Institutional Student ID / Roll No</label>
+              <input type="text" id="form-roll-no" class="form-control font-mono" placeholder="e.g. COEP-24-CS-048">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-program">Program / Department *</label>
+              <select id="form-program" class="form-control" required>
+                <option value="B.Tech Computer Engineering">B.Tech Computer Engineering</option>
+                <option value="B.Tech Artificial Intelligence & Data Science">B.Tech Artificial Intelligence & Data Science</option>
+                <option value="B.Tech Electronics & Telecommunication">B.Tech Electronics & Telecommunication</option>
+                <option value="B.Tech Mechanical Engineering">B.Tech Mechanical Engineering</option>
+                <option value="M.Tech Data Science & AI">M.Tech Data Science & AI</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-seat-type">Seat Allocation Type *</label>
+              <select id="form-seat-type" class="form-control" required>
+                <option value="Regular (Open/Merit)">Regular (Open / State Merit)</option>
+                <option value="Supernumerary (TFW - Tuition Fee Waiver)">Supernumerary (TFW - Tuition Fee Waiver 5%)</option>
+                <option value="Supernumerary (EWS 10%)">Supernumerary (EWS 10%)</option>
+                <option value="Supernumerary (NRI Quota - 5%)">Supernumerary (NRI Quota - 5%)</option>
+                <option value="Supernumerary (OCI Status)">Supernumerary (OCI - Overseas Citizen of India)</option>
+                <option value="Supernumerary (Foreign National - FN 15%)">Supernumerary (Foreign National - FN 15%)</option>
+                <option value="Supernumerary (PMSSS J&K/Ladakh)">Supernumerary (PMSSS J&K and Ladakh)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="form-category">Social Category / Reservation</label>
+              <select id="form-category" class="form-control">
+                <option value="General">General / Open</option>
+                <option value="OBC-NCL">OBC-NCL</option>
+                <option value="SC">SC (Scheduled Caste)</option>
+                <option value="ST">ST (Scheduled Tribe)</option>
+                <option value="General - EWS">General - EWS</option>
+                <option value="Foreign National">Foreign National / International</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div style="margin-top:1.5rem; display:flex; justify-content:flex-end; gap:10px;">
+            <button type="reset" class="btn btn-secondary">Reset Fields</button>
+            <button type="submit" class="btn btn-primary">
+              💾 Register Student & Commit to AICTE Ledger
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Live Enrolled Student Roster -->
+      <div class="card" style="margin-top:1.5rem;">
+        <div class="card-header">
+          <h3 class="card-title">🧑‍🎓 Enrolled Student Registry with Real-Time APAAR Verification Status</h3>
+          <span class="text-xs text-muted">Showing active students for College of Engineering Pune</span>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>National APAAR ID</th>
+                <th>Program</th>
+                <th>Seat Quota</th>
+                <th>Category</th>
+                <th>Validation Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="student-roster-body">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         TAB 3: NFC SMART CARD INFO READER (SPECIAL INNOVATION FEATURE)
+    =========================================================== -->
+    <section class="tab-pane" id="nfc-tab">
+      
+      <div class="hero-overview" style="background: linear-gradient(135deg, rgba(30, 58, 138, 0.4) 0%, rgba(13, 148, 136, 0.15) 100%);">
+        <div class="hero-content">
+          <div class="hero-badge-tag" style="background: rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.4); color:#34d399;">
+            📳 CONTACTLESS HARDWARE & SIMULATION ENGINE
+          </div>
+          <h2 class="hero-title">NFC Smart Academic Card Reader Station</h2>
+          <p class="hero-desc">
+            Instantly decode student credentials when an NFC smart card is tapped or scanned on a reader terminal. Extracts the 12-digit APAAR ID, verifies the cryptographic P-256 digital signature against AICTE central repository, and detects fraud or dual-enrolment in under 15 milliseconds.
+          </p>
+        </div>
+      </div>
+
+      <!-- Main Interactive NFC Terminal Grid -->
+      <div class="nfc-terminal-container">
+        
+        <!-- Left: Physical Reader Pad + Virtual 3D Smart Card -->
+        <div class="nfc-pad-card">
+          <h3 class="font-bold text-lg mb-1">NFC Contactless Reading Pad</h3>
+          <p class="text-xs text-muted">ISO/IEC 14443-A • 13.56 MHz Standard Contactless Terminal</p>
+
+          <div class="nfc-pulse-antenna" id="nfc-reader-pulse">
+            <div class="antenna-core-icon">
+              📳
+            </div>
+          </div>
+
+          <!-- 3D Realistic Virtual Contactless Smart Card -->
+          <div class="virtual-smart-card" id="virtual-nfc-card">
+            <div class="card-top-row">
+              <div class="card-chip"></div>
+              <div class="nfc-contactless-waves">📶</div>
+              <div class="card-hologram-seal">APAAR • AICTE</div>
+            </div>
+            
+            <div class="card-apaar-number" id="vcard-apaar">2024 • 8849 • 1029</div>
+            
+            <div class="card-student-meta">
+              <div>
+                <div class="card-student-name-embossed" id="vcard-name">PRIYA LAKSHMI NAIR</div>
+                <div class="card-sub-inst" id="vcard-inst">COEP TECH UNIVERSITY • B.TECH CSE</div>
+              </div>
+              <div class="text-xs font-mono" style="color:#d4af37; font-weight:bold;">TFW QUOTA</div>
+            </div>
+          </div>
+
+          <!-- Quick Test Selector Cards (For Evaluators & Demos) -->
+          <div style="margin-top:1.5rem; text-align:left;">
+            <label class="form-label">Tap a Pre-Programmed Student Smart Card to Test Reader:</label>
+            <div class="nfc-quick-cards-dock" id="nfc-quick-cards">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- Hardware API Trigger -->
+          <div style="margin-top:1.25rem; padding-top:1rem; border-top:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+            <div class="text-xs text-muted" id="nfc-hardware-status">
+              Web NFC API: Available on Chrome Android
+            </div>
+            <button class="btn btn-outline btn-xs" onclick="window.nfcReader.startHardwareNfc().then(r => alert(r.message))">
+              📡 Connect Physical Reader
+            </button>
+          </div>
+
+          <!-- Live Reader Terminal Stream -->
+          <div class="terminal-card" id="nfc-telemetry-log">
+            <div class="term-line success"><span class="term-time">[SYSTEM]</span> <span class="term-text">NFC Subsystem initialized. Listening on 13.56 MHz...</span></div>
+            <div class="term-line"><span class="term-time">[SYSTEM]</span> <span class="term-text">AICTE Cryptographic Trust Chain Root: P-256 ECDSA Online.</span></div>
+          </div>
+        </div>
+
+        <!-- Right: Live Scanned Student Dossier View -->
+        <div>
+          <!-- Empty Placeholder before scan -->
+          <div id="nfc-empty-state" class="card" style="text-align: center; padding: 4rem 2rem;">
+            <div style="font-size: 3.5rem; margin-bottom: 1rem;">💳</div>
+            <h3 class="text-xl font-bold">Waiting for NFC Student Smart Card Tap</h3>
+            <p class="text-sm text-muted mt-2" style="max-width: 440px; margin: 0 auto;">
+              Click on any test smart card on the left or tap a physical NFC card to instantly read student details, verify AICTE approved intake status, and detect anomalies.
+            </p>
+            <button class="btn btn-primary mt-4" onclick="window.nfcReader.processCardRead('2024-8849-1029')">
+              ⚡ Simulate Instant Card Tap (Priya Nair)
+            </button>
+          </div>
+
+          <!-- Scanned Dossier Container -->
+          <div id="nfc-student-dossier" style="display: none;"></div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         TAB 4: AUTHORIZED STAKEHOLDER VERIFIER (REQUIREMENT 5 & 6)
+    =========================================================== -->
+    <section class="tab-pane" id="verification-tab">
+      
+      <div class="veri-search-box">
+        <span class="hero-badge-tag">AUTHORIZED VERIFICATION CELL</span>
+        <h2 class="text-2xl font-bold mt-2">National Academic Credential Verification Portal</h2>
+        <p class="text-sm text-muted mt-1" style="max-width: 600px; margin: 0 auto;">
+          For Regulatory Bodies, Employers, State Admissions Committees, and Foreign Embassies to authenticate student enrolment, approved intake compliance, and degree validity.
+        </p>
+
+        <div class="search-input-group">
+          <input type="text" id="search-apaar-input" class="form-control font-mono" placeholder="Enter 12-digit APAAR ID (e.g. 2024-8849-1029) or Roll Number">
+          <button class="btn btn-primary" id="verify-lookup-btn">
+            🔍 Verify Authenticity
+          </button>
+        </div>
+
+        <div class="mt-3 text-xs text-muted">
+          Quick test queries: 
+          <a href="javascript:void(0)" onclick="document.getElementById('search-apaar-input').value='2024-8849-1029'; document.getElementById('verify-lookup-btn').click();" class="text-accent">2024-8849-1029 (Valid)</a> • 
+          <a href="javascript:void(0)" onclick="document.getElementById('search-apaar-input').value='2024-4190-7721'; document.getElementById('verify-lookup-btn').click();" class="text-danger">2024-4190-7721 (Dual Enrolment Breach)</a> •
+          <a href="javascript:void(0)" onclick="document.getElementById('search-apaar-input').value='2024-9102-3844'; document.getElementById('verify-lookup-btn').click();" class="text-purple">2024-9102-3844 (Foreign National)</a>
+        </div>
+      </div>
+
+      <!-- Dynamic Verification Result -->
+      <div id="verification-result-view"></div>
+
+    </section>
+
+    <!-- ==========================================================
+         TAB 5: NIRF, NAAC & POLICY REPORTS (REQUIREMENT 9)
+    =========================================================== -->
+    <section class="tab-pane" id="reports-tab">
+      
+      <div class="card mb-4">
+        <div class="card-header">
+          <div>
+            <h2 class="text-2xl font-bold">Policy-Making, Accreditation & Regulatory Reports</h2>
+            <p class="text-sm text-muted">Instant generation of certified data submissions for NIRF Rankings, NAAC Criterion II, and AICTE Approval Process Handbook (APH).</p>
+          </div>
+        </div>
+
+        <div class="kpi-grid mt-4">
+          <div class="card">
+            <h3 class="font-bold text-lg mb-2">🏛️ AICTE APH Intake Compliance</h3>
+            <p class="text-xs text-muted mb-4">Regional inspection audit detecting institutions exceeding approved intake quotas or supernumerary caps.</p>
+            <button class="btn btn-primary btn-sm" onclick="window.exportPolicyReport('aph')">
+              📥 Export APH Audit (.CSV)
+            </button>
+          </div>
+
+          <div class="card">
+            <h3 class="font-bold text-lg mb-2">🏆 NIRF Enrolment Data</h3>
+            <p class="text-xs text-muted mb-4">Official student strength tables with sanctioned intake, actual enrolment, and geographic/economic diversity breakdown.</p>
+            <button class="btn btn-secondary btn-sm" onclick="window.exportPolicyReport('nirf')">
+              📥 Export NIRF Submission (.CSV)
+            </button>
+          </div>
+
+          <div class="card">
+            <h3 class="font-bold text-lg mb-2">⭐ NAAC Criterion II Data</h3>
+            <p class="text-xs text-muted mb-4">Enrolment percentage against approved seats and reserved category seats adherence metrics for accreditation.</p>
+            <button class="btn btn-outline btn-sm" onclick="window.exportPolicyReport('naac')">
+              📥 Export NAAC Criterion II (.CSV)
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================================
+         TAB 6: AUDIT TRAIL, RBAC & API EXPLORER (REQUIREMENTS 7 & 8)
+    =========================================================== -->
+    <section class="tab-pane" id="audit-tab">
+      
+      <!-- API Explorer Card -->
+      <div class="card mb-4">
+        <div class="card-header">
+          <h3 class="card-title">🔌 AICTE & Institutional REST / Webhook Integration API</h3>
+          <span class="badge badge-success">OpenAPI v3.1 Compliant</span>
+        </div>
+        <p class="text-sm text-muted mb-3">
+          Enabling student information systems (ERP/SIS) of AICTE institutions to push admission rosters and query APAAR verification endpoints in real-time.
+        </p>
+
+        <div class="terminal-card" style="height: auto; max-height: 220px;">
+          <div><span style="color:#10b981;">POST</span> /api/v1/institution/admissions/batch-sync <span style="color:#64748b;">(Bearer token required)</span></div>
+          <div class="text-xs text-muted mt-1">{ "institutionId": "1-002938171", "academicYear": "2024-25", "records": [ ... ] }</div>
+          <div class="mt-2"><span style="color:#3b82f6;">GET</span> /api/v1/apaar/verify/{apaarId} <span style="color:#64748b;">(Returns verifiable credential & signature)</span></div>
+          <div class="mt-2"><span style="color:#f59e0b;">POST</span> /api/v1/nfc/telemetry-log <span style="color:#64748b;">(Encrypted smart card APDU handshake)</span></div>
+        </div>
+      </div>
+
+      <!-- Real-Time Audit Ledger (Requirement 8) -->
+      <div class="card">
+        <div class="card-header">
+          <h3 class="card-title">🛡️ National Immutable Audit Trail & Access Control Ledger</h3>
+          <span class="text-xs text-muted font-mono">Role-Based Access Control (RBAC) Enforced</span>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Log ID</th>
+                <th>Timestamp</th>
+                <th>Actor / Entity</th>
+                <th>Operation</th>
+                <th>Security Status</th>
+                <th>Details / Cryptographic Reference</th>
+              </tr>
+            </thead>
+            <tbody id="audit-logs-table-body">
+              <!-- Dynamically populated -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ==========================================================
+       MODAL: VERIFIABLE DEGREE CERTIFICATE WITH APAAR ID (REQ 10)
+  =========================================================== -->
+  <div class="modal-overlay" id="degree-modal">
+    <div class="modal-box-large">
+      <div class="modal-header-bar">
+        <div class="font-bold text-sm">
+          🎓 Official Verifiable Degree Certificate • Linked to National APAAR ID
+        </div>
+        <div style="display:flex; gap:8px;">
+          <button class="btn btn-xs btn-primary" onclick="window.printDegreeCertificate()">
+            🖨️ Print / Save as PDF
+          </button>
+          <button class="btn btn-xs btn-secondary" onclick="window.closeDegreeModal()">
+            ✕ Close
+          </button>
+        </div>
+      </div>
+
+      <div id="degree-certificate-preview">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/nfc-reader.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
